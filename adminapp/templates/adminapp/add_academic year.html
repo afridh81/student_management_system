@@ -1,0 +1,119 @@
+{% extends 'adminapp/main.html' %}
+{% load static %}
+
+ {% block body_contents %}
+
+ {% include 'adminapp/left_panel.html' %}
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {% include 'adminapp/header.html' %}
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Welcome</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">{{request.user.username}}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button trigger modal -->
+<div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Academic list</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Academic</th>
+
+                                             </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for c in academic_year %}
+                                        <tr>
+                                            <td>{{c.id}}</td>
+                                            <td>{{c.academic}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+<!-- Modal -->
+
+        <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Add Academic year</strong>
+                            </div>
+                            <div class="card-body">
+                                            <form method="POST">{% csrf_token %}
+            <div class="modal-body">
+                {{form.as_p}}
+
+            </div>
+
+<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        <div class="content mt-3">
+
+            {% if messages %}
+
+            <div class="col-sm-12">
+                <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                    <span class="badge badge-pill badge-success">Success</span>
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+                                            </form>
+
+
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+<script>
+        var form_fields = document.getElementsByTagName('input')
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+		}
+
+
+	</script>
+
+
+{% endblock body_contents %}
+

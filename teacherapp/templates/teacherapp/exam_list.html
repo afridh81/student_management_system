@@ -1,0 +1,106 @@
+{% extends 'teacherapp/main.html' %}
+{% load static %}
+
+ {% block body_contents %}
+
+ {% include 'teacherapp/left_panel.html' %}
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {% include 'teacherapp/header.html' %}
+        <!-- Header-->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Welcome</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">{{request.user.username}}</li>
+                        </ol>
+                    </div>
+                </div>
+                {{msg}}
+            </div>
+        </div>
+
+        <div class="content mt-3">
+
+            {% if messages %}
+
+            <div class="col-sm-12">
+                <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                    <span class="badge badge-pill badge-success">Success</span>
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
+            {% endif %}
+
+            {% for c in exams %}
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-flat-color-{% cycle 5 4 3 2 1 %}">
+                    <div class="card-body pb-0">
+                        <label style="color:black">Subject :</label> <h6 style="color:black">{{c.subject.subject}}</h6><hr>
+                            {% comment %}<label style="color:blue">Faculty :</label> <h5 style="color:black">{{c.subject.teacher}}</h5><hr>
+                            <label style="color:blue">Department :</label> <h6 style="color:black">{{c.subject.department}}</h6><hr>
+                            <label style="color:blue">Semester :</label> <h6 style="color:black">{{c.subject.semester}}</h6><hr>
+                            <label style="color:blue">Division :</label> <h6 style="color:black">{{c.subject.division}}</h6><hr>{% endcomment %}
+                        <label style="color:blue">Start Time :</label> <h6 style="color:black">{{c.starting_time}}</h6>
+                            <label style="color:blue">End Time :</label> <h6 style="color:black">{{c.ending_time}}</h6>
+                            <hr>
+
+
+                        <div class="dropdown float-right">
+                            <label style="color:blue">Date :</label> <h6 style="color:black">{{c.date_of_exam}}</h6><hr>
+                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton3" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                <div class="dropdown-menu-content">
+                                    <a class="dropdown-item" href="{% url 'upload_key_details' c.id %}">Add details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mb-0">
+                            <span class="count"></span>
+                        </h4>
+                        <p class="text-light"></p>
+
+                    </div>
+
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+            <!--/.col-->
+
+            <!--/.col-->
+
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+{% endblock body_contents %}
+
