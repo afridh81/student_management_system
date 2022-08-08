@@ -1,0 +1,56 @@
+{% load static %}
+
+<aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#">Student</a>
+                <a class="navbar-brand hidden" href="#">S</a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href=""> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    </li>
+                    <h3 class="menu-title">General</h3><!-- /.menu-title -->
+
+                    <li>
+                        <a href="{% url 'exam_details' %}"> <i class="menu-icon fa fa-list"></i>Exam Details</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'subject' %}"> <i class="menu-icon fa fa-list"></i>Subject</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'student_views_score' %}"> <i class="menu-icon fa fa-list"></i>View Mark Sheet</a>
+                    </li>
+
+                    {% comment %}
+                    <li>
+                        <a href="{% url 'upload' %}"> <i class="menu-icon fa fa-list"></i>Upload answer sheet</a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="{% url 'student-exam-list' %}"> <i class="menu-icon fa fa-list"></i>Exam list</a>
+                    </li>
+                    <li>
+                        <a href=""> <i class="menu-icon fa fa-building-o"></i>User Details</a>
+                    </li>
+                    <li>
+                        <a href=""> <i class="menu-icon fa fa-building-o"></i>Insurance expired list</a>
+                    </li>
+                     <li>
+                        <a href=""> <i class="menu-icon fa fa-building-o"></i>Licence expired list</a>
+                    </li> {% endcomment %}
+                   
+            
+                </ul>
+                
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
